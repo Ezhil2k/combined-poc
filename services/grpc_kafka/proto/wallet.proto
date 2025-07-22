@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package trade_engine_wallet;
+
+
+// For Go code generation: specify the import path
+option go_package = "proto/trade_engine_walletpb";
+
+// The Wallet service definition
+service WalletService {
+  // Get user balances
+  rpc GetBalance (BalanceRequest) returns (BalanceResponse);
+}
+
+// Request message containing the user ID
+message BalanceRequest {
+  string user_id = 1;
+}
+
+// Response message with balances
+message BalanceResponse {
+  map<string, double> balances = 1; // {"BTC": 1.23, "ETH": 4.56}
+}
